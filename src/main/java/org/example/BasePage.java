@@ -19,6 +19,7 @@ public class BasePage {
 
     @BeforeTest
     public WebDriver InitializeDriver() throws IOException {
+
         Properties prop = new Properties();
         FileInputStream fis = new FileInputStream(
                 dataPath);
@@ -43,8 +44,8 @@ public class BasePage {
             System.out.println("~~~~~~ CHROME ICIN TESTLER BAŞLADI ~~~~~");
 
         }
-    return driver;
 
+        return driver;
     }
 
 
