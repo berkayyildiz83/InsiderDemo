@@ -1,8 +1,7 @@
 package org.example;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -65,7 +64,7 @@ public class CareersPage {
 
     public void waitMethodC() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.visibilityOfElementLocated((By) teamsButton));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[normalize-space()='See all teams']")));
     }
 
     public void clickTeamsButton(){
@@ -89,8 +88,29 @@ public class CareersPage {
     }
 
     public void assertChildWindowsUrl(){
-        String childWindowsUrl = Arrays.toString(driver.getCurrentUrl().split("useinsider/"));
+        String childWindowsUrl = Arrays.toString(driver.getCurrentUrl().split("useinsider"));
+        System.out.println(childWindowsUrl);
         Assert.assertEquals(childWindowsUrl, "https://jobs.lever.co/");
         driver.close();
+    }
+
+    public void jsScroll() throws InterruptedException {
+        Actions action = new Actions(driver);
+        action.sendKeys(Keys.PAGE_DOWN).build().perform();
+        Thread.sleep(1000);
+        action.sendKeys(Keys.PAGE_DOWN).build().perform();
+        Thread.sleep(1000);
+        action.sendKeys(Keys.PAGE_DOWN).build().perform();
+        Thread.sleep(1000);
+
+    }
+
+    public void qaScroll() throws InterruptedException {
+        Thread.sleep(3000);
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("document.querySelector(\"img[src='https://useinsider.com/assets/media/2021/03/qa.png']\").scrollIntoView()");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[src='https://useinsider.com/assets/media/2021/03/qa.png']")));
+
     }
 }

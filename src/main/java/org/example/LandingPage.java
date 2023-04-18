@@ -27,8 +27,6 @@ public class LandingPage {
     @FindBy(css = "a[href='https://useinsider.com/careers/']")
     WebElement careersButton;
 
-    @FindBy(xpath = "(//div[@class='location-info'])[1]")
-    WebElement locInfo;
 
     public void clickCookieButton() {
         cookieButton.click();
@@ -57,7 +55,7 @@ public class LandingPage {
 
     public void waitMethodL() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.visibilityOfElementLocated((By) locInfo));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#career-head-img")));
     }
 
 

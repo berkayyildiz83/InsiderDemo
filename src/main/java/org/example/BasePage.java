@@ -28,7 +28,7 @@ public class BasePage {
 
         if (browserName.equals("firefox")) {
             WebDriverManager.firefoxdriver().setup();
-            WebDriver driver = new FirefoxDriver();
+            driver = new FirefoxDriver();
             driver.get(prop.getProperty("url"));
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -37,7 +37,7 @@ public class BasePage {
 
         } else if (browserName.equals("chrome")) {
             WebDriverManager.firefoxdriver().setup();
-            WebDriver driver = new FirefoxDriver();
+            driver = new FirefoxDriver();
             driver.get(prop.getProperty("url"));
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
