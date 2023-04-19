@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -88,9 +87,12 @@ public class CareersPage {
     }
 
     public void assertChildWindowsUrl(){
-        String childWindowsUrl = Arrays.toString(driver.getCurrentUrl().split("useinsider"));
-        System.out.println(childWindowsUrl);
-        Assert.assertEquals(childWindowsUrl, "https://jobs.lever.co/");
+
+
+
+        String[] childWindowsUrl = driver.getCurrentUrl().split("useinsider/");
+        System.out.println(childWindowsUrl[0]);
+        Assert.assertEquals(childWindowsUrl[0], "https://jobs.lever.co/");
         driver.close();
     }
 
